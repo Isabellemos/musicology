@@ -2,7 +2,8 @@
 
 MY CORPUS 
 
-hoiiiii
+hoiiiii!!
+
 
 My corpus consists of the following songs. I chose songs from my personal 'Techno' playlist on Spotify. 
 
