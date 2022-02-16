@@ -2,6 +2,8 @@
 
 MY CORPUS 
 
+hoiiiii
+
 My corpus consists of the following songs. I chose songs from my personal 'Techno' playlist on Spotify. 
 
 Even tough these songs all belong to the techno genre, they all give me a very different feeling when I listen to them. For example, some of them make me want to dance and others make me relaxed.
