@@ -6,7 +6,9 @@ Hi! For my corpus I'm still in doubt between 2 options however I think I will go
 
 Option 1: My corpus consists of all music of my favourite artist Sevdaliza. 
 
-Sevdaliza started making music in 2015. Her genre is hard to identify I think. It is close to electronic / dance however I also feel Sevdaliza changed her identity / genre over the years as well. I would like to investigate how Sevdaliza's music changed over time (from 2015 to 2022) by comparing her songs split up in timeframes (I think I will divide songs in groups per year). 
+Sevdaliza started making music in 2015. Her genre is hard to identify I think. It is close to electronic / dance however I also feel Sevdaliza slightly changed her style / genre over the years as well. 
+
+I would like to investigate in what way Sevdaliza's music changed over time (from 2015 to 2022) by comparing her songs split up in timeframes (I think I will divide songs in groups per year). 
 
 
 
