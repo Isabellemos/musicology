@@ -2,34 +2,19 @@
 
 MY CORPUS 
 
-Hi! For my corpus I'm still in doubt between 2 options however I think I will go for option 1!
+I will be investigating the songs of the famous duo Bicep. Bicep are an electronic music production and DJ duo. They have released two albums, however ‘Glue’ by Bicep is an undeniable classic. The 4:45 dance hit is one of the best dance songs of all time, and its immediately recognisable shuffling beat, subtle bass and soaring vocals are a surefire way to get any rave absolutely heaving. It's an iconic song everyone immediately recognizes. 
 
-Option 1: My corpus consists of all music of my favourite artist Sevdaliza. 
+For my musicology project I would like to research what makes Glue so outstanding and special. Therefore I will question the following:
 
-Sevdaliza started making music in 2015. Her genre is hard to identify I think. It is close to electronic / dance however I also feel Sevdaliza slightly changed her style / genre over the years as well. 
+'What is the difference between all Biceps' music and their signature song 'Glue', and what makes this song so recognisable, catchy and special? 
 
-I would like to investigate in what way Sevdaliza's music changed over time (from 2015 to 2022) by comparing her songs split up in timeframes (I think I will divide songs in groups per year). 
-
-
-
-=========
+My corpus consists of the 'This is Bicep' playlist on spotify. I've started comparing this playlist to the glue song by making the following graphs: 
 
 
-Option 2: My corpus consists of the following songs. I chose songs from my personal 'Techno' playlist on Spotify. 
+'Glue' song only:
 
-Even tough these songs all belong to the techno genre, they all give me a very different feeling when I listen to them. For example, some of them make me want to dance and others make me relaxed.
+<img width="785" alt="Screenshot 2022-02-21 at 12 12 55" src="https://user-images.githubusercontent.com/59538643/154944387-7112bd66-1ae6-41d8-ab63-767b7f594685.png">
 
-During this course I would like to analyse what causes these songs such a different feeling by using the Spotify API to 'encode' each song.  
+'This is Bicep' playlist without Glue:
 
-- Walking - Anyma
-- Attention seeker - Josh Gigante 
-- Reveries - Mind Against 
-- Dahlia - Bicep, Hammer
-- Human - Sevdaliza
-- Patci - DJ T. 
-- Obnoxious desire - Colyn, Innellea 
-- Der Buhold - Paul Kalkbrenner 
-- Changes - Mind Against 
-- No war - Ry X Remix 
-
-
+<img width="778" alt="Screenshot 2022-02-21 at 12 13 21" src="https://user-images.githubusercontent.com/59538643/154944449-2345d848-c112-465c-ba11-89ea3f58fa07.png">
