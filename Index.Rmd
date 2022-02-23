@@ -12,7 +12,7 @@ library(flexdashboard)
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Section 1 
+### Section 1 ----
 
 ```{r}
 
