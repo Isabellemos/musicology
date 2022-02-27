@@ -2,13 +2,16 @@
 
 MY CORPUS 
 
-I will be investigating the songs of the famous duo Bicep. Bicep are an electronic music production and DJ duo. They have released two albums, however ‘Glue’ by Bicep is an undeniable classic. The 4:45 dance hit is one of the best dance songs of all time, and its immediately recognisable shuffling beat, subtle bass and soaring vocals are a surefire way to get any rave absolutely heaving. It's an iconic song everyone immediately recognizes. 
+I will be investigating the songs of the famous duo Bicep and compare this to the song of Stephan Bodzin. Both Bicep and Bodzin are an electronic artists and have a very different but characteristic style. A fan can immediately recognize a Bicep / Stephan Bodzin song. 
 
-For my musicology project I would like to research what makes Glue so outstanding and special. Therefore I will question the following:
+Bodzins songs typically have a baseline driven, emotive and hypnotic synth. 
 
-'What is the difference between all Biceps' music and their signature song 'Glue', and what makes this song so recognisable, catchy and special? 
+Biceps songs have an immediately recognisable shuffling beat, subtle bass and soaring vocals are a surefire way to get any rave absolutely heaving.
 
-My corpus consists of the 'This is Bicep' playlist on spotify. I've started comparing this playlist to the glue song by making the following graphs: 
+However these artists have a very different electornic style, I think these artists are one of my all time favourites and I will never bore me. Therefore I am wondering if there are any simmilarities between the artists to figure out what makes me love them.
+
+
+My corpus consists of the 'This is Bicep' playlist on spotify and the 'This is Stephan Bodzin' playlist. 
 
 
 'Glue' song only:
