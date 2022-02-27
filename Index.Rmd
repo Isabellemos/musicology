@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Isabelle"
 output: 
   flexdashboard::flex_dashboard:
   storyboard: true
@@ -7,27 +7,97 @@ output:
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
+library(tidyverse)
+library(spotifyr)
+library(compmus)
+
+
+apricots_bicep <-
+  get_tidy_audio_analysis("0WfOuXw05LJq4ik1lVvTzi") %>%
+  select(segments) %>%
+  unnest(segments) %>%
+  select(start, duration, pitches)
+
+
+river_bodzin <-
+  get_tidy_audio_analysis("215z00CrTsmjBop1O4kbWz") %>%
+  select(segments) %>%
+  unnest(segments) %>%
+  select(start, duration, pitches)
+
+
+
 ```
 
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Section 1 ----
+### Introduction
 
-```{r}
+```{.tabset}
+
+I will be investigating the songs of the famous duo Bicep and compare this to the song of Stephan Bodzin. Both Bicep and Bodzin are an electronic artists and have a very different but characteristic style. A fan can immediately recognize a Bicep / Stephan Bodzin song.
+
+Bodzins songs typically have a baseline driven, emotive and hypnotic synth.
+
+Biceps songs have an immediately recognisable shuffling beat, subtle bass and soaring vocals are a surefire way to get any rave absolutely heaving.
+
+However these artists have a very different electornic style, I think these artists are one of my all time favourites and I will never bore me. Therefore I am wondering if there are any simmilarities between the artists to figure out what makes me love them.
+
+My corpus consists of the 'This is Bicep' playlist on spotify and the 'This is Stephan Bodzin' playlist.
+
+
+
 
 ```
 
 Column {data-width=350}
 -----------------------------------------------------------------------
 
-### Chart B
+### Visualisation
+
+
+```{r}
+apricots_bicep %>%
+  mutate(pitches = map(pitches, compmus_normalise, "euclidean")) %>%
+  compmus_gather_chroma() %>% 
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = pitch_class,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  theme_minimal() +
+  scale_fill_viridis_c() + ggtitle('Apricots from Bicep')
+
+river_bodzin %>%
+  mutate(pitches = map(pitches, compmus_normalise, "euclidean")) %>%
+  compmus_gather_chroma() %>% 
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = pitch_class,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  theme_minimal() +
+  scale_fill_viridis_c() + ggtitle("River from Bodzin")
+```
 
 ```{r}
 
+
+
 ```
 
-### Chart C
+### Conclusion and Discussion
 
 ```{r}
 
