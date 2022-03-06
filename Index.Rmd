@@ -3,7 +3,10 @@ title: "Isabelle"
 output: 
   flexdashboard::flex_dashboard:
   storyboard: true
+  orientation: columns
+  vertical_layout: fill
 ---
+
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
@@ -26,17 +29,17 @@ river_bodzin <-
   select(start, duration, pitches)
 
 
-
 ```
 
-Column {data-width=650}
+Introduction 
+===
 -----------------------------------------------------------------------
 
 ### Introduction
 
-```{.tabset}
+```{.tabset} 
 
-I will be investigating the songs of the famous duo Bicep and compare this to the song of Stephan Bodzin. Both Bicep and Bodzin are an electronic artists and have a very different but characteristic style. A fan can immediately recognize a Bicep / Stephan Bodzin song.
+I will be investigating the songs of the famous duo Bicep and compare this to the songs of Stephan Bodzin. Both Bicep and Bodzin are an electronic artists and have a very different but characteristic style. A fan can immediately recognize a Bicep / Stephan Bodzin song.
 
 Bodzins songs typically have a baseline driven, emotive and hypnotic synth.
 
@@ -46,16 +49,28 @@ However these artists have a very different electornic style, I think these arti
 
 My corpus consists of the 'This is Bicep' playlist on spotify and the 'This is Stephan Bodzin' playlist.
 
+```
+Global comparison of Bicep and Bodzin
+===
+Column {data-width=600}
+---------------------------
+
+### Global comparison of Bicep and Bodzin
+```{r}
 
 
 
 ```
 
-Column {data-width=350}
------------------------------------------------------------------------
+
+
+
+Chromograms 
+===
+Column {data-width=600}
+---------------------------
 
 ### Visualisation
-
 
 ```{r}
 apricots_bicep %>%
@@ -91,12 +106,331 @@ river_bodzin %>%
   scale_fill_viridis_c() + ggtitle("River from Bodzin")
 ```
 
-```{r}
+Column {data-width=400}
+-------------------------------------
 
+```.tabset{}
 
+here is some textttt
 
 ```
 
+
+
+
+Cepstrograms
+===
+Column {data-width=300}
+---------------------------
+### Cepstrograms 
+```{r}
+
+ataraxia <-
+  get_tidy_audio_analysis("6wIlFCtQHeC8UyljWYnMoI") %>% # Change URI.
+  compmus_align(bars, segments) %>%                     # Change `bars`
+  select(bars) %>%                                      #   in all three
+  unnest(bars) %>%                                      #   of these lines.
+  mutate(
+    pitches =
+      map(segments,
+        compmus_summarise, pitches,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  ) %>%
+  mutate(
+    timbre =
+      map(segments,
+        compmus_summarise, timbre,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  )
+
+ataraxia %>%
+  compmus_gather_timbre() %>%
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = basis,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  scale_fill_viridis_c() +                              
+  theme_classic() + ggtitle("Ataraxia - Stephan Bodzin")
+
+
+singularity <-
+  get_tidy_audio_analysis("0yuJtvXsapVOQfNDYxQ5mw") %>% # Change URI.
+  compmus_align(bars, segments) %>%                     # Change `bars`
+  select(bars) %>%                                      #   in all three
+  unnest(bars) %>%                                      #   of these lines.
+  mutate(
+    pitches =
+      map(segments,
+        compmus_summarise, pitches,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  ) %>%
+  mutate(
+    timbre =
+      map(segments,
+        compmus_summarise, timbre,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  )
+
+singularity %>%
+  compmus_gather_timbre() %>%
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = basis,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  scale_fill_viridis_c() +                              
+  theme_classic() + ggtitle("Singularity - Stephan Bodzin")
+
+
+
+boavista <-
+  get_tidy_audio_analysis("3hw5kx3JoJ5k5SUAJRlmFq") %>% # Change URI.
+  compmus_align(bars, segments) %>%                     # Change `bars`
+  select(bars) %>%                                      #   in all three
+  unnest(bars) %>%                                      #   of these lines.
+  mutate(
+    pitches =
+      map(segments,
+        compmus_summarise, pitches,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  ) %>%
+  mutate(
+    timbre =
+      map(segments,
+        compmus_summarise, timbre,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  )
+
+boavista %>%
+  compmus_gather_timbre() %>%
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = basis,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  scale_fill_viridis_c() +                              
+  theme_classic() + ggtitle("Boavista - Stephan Bodzin")
+
+
+
+glue <-
+  get_tidy_audio_analysis("2aJDlirz6v2a4HREki98cP") %>% # Change URI.
+  compmus_align(bars, segments) %>%                     # Change `bars`
+  select(bars) %>%                                      #   in all three
+  unnest(bars) %>%                                      #   of these lines.
+  mutate(
+    pitches =
+      map(segments,
+        compmus_summarise, pitches,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  ) %>%
+  mutate(
+    timbre =
+      map(segments,
+        compmus_summarise, timbre,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  )
+
+glue %>%
+  compmus_gather_timbre() %>%
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = basis,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  scale_fill_viridis_c() +                              
+  theme_classic() + ggtitle("Glue - Bicep")
+
+
+
+atlas <-
+  get_tidy_audio_analysis("54TgI46OnNqcf0SyzQyCL6") %>% # Change URI.
+  compmus_align(bars, segments) %>%                     # Change `bars`
+  select(bars) %>%                                      #   in all three
+  unnest(bars) %>%                                      #   of these lines.
+  mutate(
+    pitches =
+      map(segments,
+        compmus_summarise, pitches,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  ) %>%
+  mutate(
+    timbre =
+      map(segments,
+        compmus_summarise, timbre,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  )
+
+atlas %>%
+  compmus_gather_timbre() %>%
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = basis,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  scale_fill_viridis_c() +                              
+  theme_classic() + ggtitle("Atlas - Bicep")
+
+
+
+apricots <-
+  get_tidy_audio_analysis("0WfOuXw05LJq4ik1lVvTzi") %>% # Change URI.
+  compmus_align(bars, segments) %>%                     # Change `bars`
+  select(bars) %>%                                      #   in all three
+  unnest(bars) %>%                                      #   of these lines.
+  mutate(
+    pitches =
+      map(segments,
+        compmus_summarise, pitches,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  ) %>%
+  mutate(
+    timbre =
+      map(segments,
+        compmus_summarise, timbre,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  )
+
+apricots %>%
+  compmus_gather_timbre() %>%
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = basis,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  scale_fill_viridis_c() +                              
+  theme_classic() + ggtitle("Apricots - Bicep")
+
+```
+
+Column {data-width=400}
+-------------------------------------
+
+```.tabset{}
+
+Some ceptrograms of both artists. 
+
+```
+Outlier
+===
+### Outliers of both artists. 
+
+```{r}
+
+glue <-
+  get_tidy_audio_analysis("2aJDlirz6v2a4HREki98cP") %>%
+  select(segments) %>%
+  unnest(segments) %>%
+  select(start, duration, pitches)
+
+glue %>%
+  mutate(pitches = map(pitches, compmus_normalise, "chebyshev")) %>%
+  compmus_gather_chroma() %>% 
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = pitch_class,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  theme_minimal() +
+  scale_fill_viridis_c() + ggtitle('Glue - Bicep')
+
+
+
+singularity <-
+  get_tidy_audio_analysis("0yuJtvXsapVOQfNDYxQ5mw") %>%
+  select(segments) %>%
+  unnest(segments) %>%
+  select(start, duration, pitches)
+
+singularity %>%
+  mutate(pitches = map(pitches, compmus_normalise, "chebyshev")) %>%
+  compmus_gather_chroma() %>% 
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = pitch_class,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  theme_minimal() +
+  scale_fill_viridis_c() + ggtitle("Singularity - Bodzin")
+
+
+```
+Column {data-width=400}
+-------------------------------------
+
+```.tabset{}
+
+
+This is a visualisation of two outliers, one of both artists. I think of these songs as ‘outliers’ because they are by far the most popular songs of both artists so I thought it would be interesting to look if there are certain extraordinary properties or similarities within their chromagrams. 
+
+First chromogram is from the song Glue by Bicep. The first part of the song is a repetition of the same rhythm, which is visible in the chromagram. The highest magnitude is around D and G#|Ab / G. After this it is visible that this same rhythm keeps repeating throughout the song, but as the song is building up more elements are added (a voice and other electronic sounds). This makes the chromagram very mixed and a bit messy. Even though it is still possible to see the repeating rhythm, which you will notice if you listen to Glue. 
+An extraordinary part in the chromagram is the yellow (high magnitude) stripe in the middle of the chromagram. This represents the high-pitched vocals, which is characteristic of the song Glue. 
+
+The second chromagram is of the most popular Stephan Bodzin song, namely ’Singularity’. It is clear from the chromagram that the throughout the whole song there is a high magnitude on the G#|Ab, A and B notes. This forms a yellow ‘band’ on the top of the chromagram, so this represents the repeating bass-synth rhythm which is only composed of two chords plus the typical Bodzin-style synthesizers (this will be very clear when you listen to the song). 
+What makes this song so specials is that the built-up is actually very simple and keeps repeating; there are some high pitches throughout the songs but the basis is really these two chords.  
+
+```
+
+
+
+
+
+
+Conclusion
+===
 ### Conclusion and Discussion
 
 ```{r}
