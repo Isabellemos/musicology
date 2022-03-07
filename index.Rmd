@@ -1,5 +1,5 @@
 ---
-title: "Isabelle"
+title: "Isabelle Mos"
 output: 
   flexdashboard::flex_dashboard:
   storyboard: true
