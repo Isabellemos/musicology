@@ -1,5 +1,5 @@
 ---
-title: "Isabelle Mos"
+title: "Isabelle Mosss"
 output: 
   flexdashboard::flex_dashboard:
   storyboard: true
@@ -429,7 +429,7 @@ What makes this song so specials is that the built-up is actually very simple an
 
 Conclusion, discussion
 ===
-### Conclusion 
+### Conclusion and Discussion
 
 ```{r}
 
