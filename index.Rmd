@@ -1,12 +1,12 @@
 ---
-title: "Isabelle Mosss"
+title: "Isabelle Mos"
 output: 
   flexdashboard::flex_dashboard:
-  storyboard: true
-  orientation: columns
-  vertical_layout: fill
+    storyboard: true
+    theme: 
+      version: 4
+      bootswatch: minty
 ---
-
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
@@ -14,6 +14,13 @@ library(tidyverse)
 library(spotifyr)
 library(compmus)
 
+bicep <- get_playlist_audio_features("", "45igKB0TM7fCIDJVo8dWpZ")
+bodzin <- get_playlist_audio_features("", "4DgGHEYzIbiKwBZaXdkVvF")
+
+bicep_2 <- get_artist_audio_features('Bicep')
+bodzin_2 <- get_artist_audio_features('Stephan Bodzin')
+
+st_artists <- rbind(bicep_2, bodzin_2)
 
 apricots_bicep <-
   get_tidy_audio_analysis("0WfOuXw05LJq4ik1lVvTzi") %>%
@@ -31,46 +38,58 @@ river_bodzin <-
 
 ```
 
-Introduction 
-===
------------------------------------------------------------------------
-
 ### Introduction
 
 ```{.tabset} 
 
-I will be investigating the songs of the famous duo Bicep and compare this to the songs of Stephan Bodzin. Both Bicep and Bodzin are an electronic artists and have a very different but characteristic style. A fan can immediately recognize a Bicep / Stephan Bodzin song.
+I will be investigating the songs of the duo Bicep and compare this to the songs of Stephan Bodzin. Both Bicep and Bodzin are an electronic artists and have a very different and characteristic style. One can immediately recognize a song from Bicep or a song from Stephan Bodzin.
 
 Bodzins songs typically have a baseline driven, emotive and hypnotic synth.
 
-Biceps songs have an immediately recognisable shuffling beat, subtle bass and soaring vocals are a surefire way to get any rave absolutely heaving.
+Biceps songs have an immediately recognisable shuffling beat, subtle bass and soaring vocals, a surefire way to get any rave absolutely heaving.
 
-However these artists have a very different electornic style, I think these artists are one of my all time favourites and I will never bore me. Therefore I am wondering if there are any simmilarities between the artists to figure out what makes me love them.
+However these artists have a very different style, I think these artists are one of my all time favourites and I will never bore me. Therefore I am wondering if there are any simmilarities in the work of these artists, so I can find out if these artists have any commonalities which makes me love them, or if other aspects of their work makes me love their music. 
 
-My corpus consists of the 'This is Bicep' playlist on spotify and the 'This is Stephan Bodzin' playlist.
+My corpus consists of the two playlists I made, one with most of the music of Bicep and one with most of the music from Stephan Bodzin. 
 
 ```
-Global comparison of Bicep and Bodzin
-===
-Column {data-width=600}
----------------------------
 
-### Global comparison of Bicep and Bodzin
+
+
+### Global orientation on Bicep and Bodzin
+```{r}
+
+st_artists %>% 
+ggplot(aes(x = valence, y = energy, color = artist_name)) +
+  geom_jitter() +
+  geom_vline(xintercept = 0.5) +
+  geom_hline(yintercept = 0.5) +
+  scale_x_continuous(expand = c(0, 0), limits = c(0, 1)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 1)) +
+  annotate('text', 0.25 / 2, 0.95, label = "Turbulent/Angry", fontface = "bold") +
+  annotate('text', 1.75 / 2, 0.95, label = "Happy/Joyful", fontface = "bold") +
+  annotate('text', 1.75 / 2, 0.05, label = "Chill/Peaceful", fontface = "bold") +
+  annotate('text', 0.25 / 2, 0.05, label = "Sad/Depressing", fontface = "bold")
+
+```
+***
+This graph gives a global analysis of the overall atmoshphere / vibe of the music of both artists. Both Bicep's and Bodzin's songs are mostly in the Turbulent / Angry section. Bodzins' songs also often lay in the sad/depressing segment. This is interesting since they both play at big festivals where the vibe is definitely not depressing. A small segment of their songs is in the happy/joyful segment though. However from this graph I can conclude that the artists have their 'Turbulent' and 'Angry' atmosphere in common. 
+
+
+
+### The energy of Bicep and Bodzin
 ```{r}
 
 
-
 ```
 
 
 
 
-Chromograms 
-===
-Column {data-width=600}
----------------------------
 
-### Visualisation
+
+
+### Chromograms
 
 ```{r}
 apricots_bicep %>%
@@ -106,22 +125,12 @@ river_bodzin %>%
   scale_fill_viridis_c() + ggtitle("River from Bodzin")
 ```
 
-Column {data-width=400}
--------------------------------------
+***
 
-```.tabset{}
 
 here is some textttt
 
-```
 
-
-
-
-Cepstrograms
-===
-Column {data-width=300}
----------------------------
 ### Cepstrograms 
 ```{r}
 
@@ -346,16 +355,12 @@ apricots %>%
 
 ```
 
-Column {data-width=400}
--------------------------------------
+***
 
-```.tabset{}
 
 Some ceptrograms of both artists. 
 
-```
-Outlier
-===
+
 ### Outliers of both artists. 
 
 ```{r}
@@ -408,11 +413,8 @@ singularity %>%
 
 
 ```
-Column {data-width=400}
--------------------------------------
 
-```.tabset{}
-
+***
 
 This is a visualisation of two outliers, one of both artists. I think of these songs as ‘outliers’ because they are by far the most popular songs of both artists so I thought it would be interesting to look if there are certain extraordinary properties or similarities within their chromagrams. 
 
@@ -422,10 +424,9 @@ An extraordinary part in the chromagram is the yellow (high magnitude) stripe in
 The second chromagram is of the most popular Stephan Bodzin song, namely ’Singularity’. It is clear from the chromagram that the throughout the whole song there is a high magnitude on the G#|Ab, A and B notes. This forms a yellow ‘band’ on the top of the chromagram, so this represents the repeating bass-synth rhythm which is only composed of two chords plus the typical Bodzin-style synthesizers (this will be very clear when you listen to the song). 
 What makes this song so specials is that the built-up is actually very simple and keeps repeating; there are some high pitches throughout the songs but the basis is really these two chords.  
 
-```
-Keygrams 
-===
-### week 10.
+
+
+### week 10 
 
 ```{r}
 
@@ -548,10 +549,8 @@ bodzin %>%
 
 ```
 
--------------------------------------
 
-```.tabset{}
-
+***
 dark = more energy // light = little energy. 
 
 Above is a histogram of keys for both the Bicep and Bodzin playlists I Made for my corpus.
@@ -561,12 +560,34 @@ Clearly, the C minor and A minor are significantly prevailing in Biceps music.Ac
 The G major and A# minor are prevailing in Bodzins music. G major is expressing the Serious, Magnificent and fantasy (source https://ledgernote.com/blog/interesting/musical-key-characteristics-emotions/). If would say this is reflected in Bodzins' music: his songs sound extraterrestrial which I would say is mainly caused by his characteristic base sound. 
 Also I plotted some keygrams from both Bicep and Bodzin to see whether these songs reflects the most typical keys of the artist. [further explanation]
 
+### tempograms
+
+```{r}
+drift <- get_tidy_audio_analysis("5xvHKh0QAbzYUUiazFGnAD")
+
+drift %>%
+  tempogram(window_size = 8, hop_size = 1, cyclic = TRUE) %>%
+  ggplot(aes(x = time, y = bpm, fill = power)) +
+  geom_raster() +
+  scale_fill_viridis_c(guide = "none") +
+  labs(x = "Time (s)", y = "Tempo (BPM)") +
+  theme_classic() + scale_fill_viridis_c('tempo')
 
 ```
+***
 
 
-Conclusion, discussion
-===
+
+This is a tempogram of outlier 'Drift' by Bicep. Analysis: 
+
+- Throughout the whole song, until +- 200 s, the tempo remains around the 127 bpm. 
+- After 200s, near the end of the song, the tempo suddenly goes all over the place. It is not possible to measure a specific tempo measure. 
+
+The song Drift is built up from the same, mysterious sounding rhythm. This rhythms goes on throughout the whole song and there is no voice. This is why is tempogram remains mostly the same.
+
+However near the end of the song another sound (a very high voice / sound going like 'whoooooo') is added to the ongoing rhythm. This sound is clearly having a slower tempo than the main rhythm. Because of these two different tempo's suddenly mixing together, the tempogram goes at all kinds of different tempo's which is clearly visible. This makes Drift an interesting outlier. 
+
+
 ### Conclusion and Discussion
 
 ```{r}
